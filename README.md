@@ -7,7 +7,6 @@
  * @FilePath: \CUSGA-OF-KAIBAI\README.md
 -->
 # CUSGA-OF-KAIBAI
-# CUSGA-OF-KAIBAI
 开摆开摆开摆开摆
 - 普子：
 - 嘉然：
