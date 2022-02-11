@@ -24,15 +24,13 @@ public class DialogSystem : MonoBehaviour
     }
     private void OnEnable()
     {
-        //text.text = textList[index];
-        //index++;
         textFinished = true;
         StartCoroutine(SetTextUI());
     }
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space)||Input.GetMouseButtonDown(0)) && index==textList.Count)
+        if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))&& index == textList.Count)
         {
             gameObject.SetActive(false);
             index = 0;
@@ -46,6 +44,7 @@ public class DialogSystem : MonoBehaviour
                 if (index == 3)
                 {
                     GameObject.Find("Canvas/Panel/MainPlayer").SetActive(true);
+                    GameObject.Find("Canvas/Panel/Grandpa").SetActive(true);
                 }
                 if(index==4)
                 {
@@ -76,12 +75,6 @@ public class DialogSystem : MonoBehaviour
     {
         textFinished = false;
         text.text = "";
-        //for(int i=0;i<textList[index].Length;i++)
-        //{
-        //    text.text += textList[index][i];
-
-        //    yield return new WaitForSeconds(textSpeed);
-        //}
         int letter = 0;
         while(!cancelTyping&&letter<textList[index].Length-1)
         {
