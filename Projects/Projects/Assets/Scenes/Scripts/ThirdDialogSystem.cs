@@ -1,58 +1,58 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//µÚÈıÕÂ¶Ô»°¿òÏµÍ³
+//ç¬¬ä¸‰ç« å¯¹è¯æ¡†ç³»ç»Ÿ
 public class ThirdDialogSystem : MonoBehaviour
 {
-    [Header("UI×é¼ş")]//±ê¼Ç·ÖÀà
-    public Text text;//Text×é¼ş
+    [Header("UIç»„ä»¶")]//æ ‡è®°åˆ†ç±»
+    public Text text;//Textç»„ä»¶
 
-    [Header("ÎÄ±¾ÎÄ¼ş")]
-    public TextAsset textFile;//ÎÄ±¾ÎÄ¼ş
-    public int index;//±ê¼ÇÎÄ¼şÖĞµÄĞĞÊı
-    public float textSpeed;//¿ØÖÆÎÄ×ÖÊä³öËÙ¶È
+    [Header("æ–‡æœ¬æ–‡ä»¶")]
+    public TextAsset textFile;//æ–‡æœ¬æ–‡ä»¶
+    public int index;//æ ‡è®°æ–‡ä»¶ä¸­çš„è¡Œæ•°
+    public float textSpeed;//æ§åˆ¶æ–‡å­—è¾“å‡ºé€Ÿåº¦
 
-    bool textFinished;//±ê¼ÇÄ³ĞĞÎÄ×ÖÊÇ·ñ¶ÁÈ¡Íê
-    bool cancelTyping;//±ê¼ÇÓÃÒÔ¿ìËÙÏÔÊ¾ÎÄ×Ö
+    bool textFinished;//æ ‡è®°æŸè¡Œæ–‡å­—æ˜¯å¦è¯»å–å®Œ
+    bool cancelTyping;//æ ‡è®°ç”¨ä»¥å¿«é€Ÿæ˜¾ç¤ºæ–‡å­—
 
-    List<string> textList = new List<string>();//¶¨ÒåÁĞ±í´æ´¢ÎÄ±¾ÎÄ¼ş¸÷ĞĞÄÚÈİ
+    List<string> textList = new List<string>();//å®šä¹‰åˆ—è¡¨å­˜å‚¨æ–‡æœ¬æ–‡ä»¶å„è¡Œå†…å®¹
     // Start is called before the first frame update
     void Awake()
     {
-        GetTextFromFile(textFile);//ÔÚÆäÓàº¯Êı¿ªÊ¼µ÷ÓÃÇ°±ã»ñÈ¡ÎÄ±¾ÎÄ¼ş
+        GetTextFromFile(textFile);//åœ¨å…¶ä½™å‡½æ•°å¼€å§‹è°ƒç”¨å‰ä¾¿è·å–æ–‡æœ¬æ–‡ä»¶
     }
-    private void OnEnable()//ÔÚ¶Ô»°¿òÆôÓÃÊ±±ãÊä³öµÚÒ»¾ä»°
+    private void OnEnable()//åœ¨å¯¹è¯æ¡†å¯ç”¨æ—¶ä¾¿è¾“å‡ºç¬¬ä¸€å¥è¯
     {
         textFinished = true;
-        StartCoroutine(SetTextUI());//Ğ­³Ì´¦Àí
+        StartCoroutine(SetTextUI());//åç¨‹å¤„ç†
     }
     // Update is called once per frame
     void Update()
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && index == textList.Count)
         {
-            gameObject.SetActive(false);//ÔÚ½áÊø¶Ô»°ºó½«¶Ô»°¿ò¹Ø±Õ
-            index = 0;//½áÊø¶Ô»°ºó½«±ê¼ÇĞĞÊıÇåÁã
+            gameObject.SetActive(false);//åœ¨ç»“æŸå¯¹è¯åå°†å¯¹è¯æ¡†å…³é—­
+            index = 0;//ç»“æŸå¯¹è¯åå°†æ ‡è®°è¡Œæ•°æ¸…é›¶
             return;
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            if (textFinished && !cancelTyping)//ÈôÎÄ¼şÕıÔÚÊä³öÇÒÎ´È¡ÏûÊä³öÔò¼ÌĞøÖ´ĞĞ
+            if (textFinished && !cancelTyping)//è‹¥æ–‡ä»¶æ­£åœ¨è¾“å‡ºä¸”æœªå–æ¶ˆè¾“å‡ºåˆ™ç»§ç»­æ‰§è¡Œ
             {
-                StartCoroutine(SetTextUI());//Ö´ĞĞĞ­³Ì´¦Àí
-                if (index == 3)//¿ØÖÆÎïÌå¿ªÆô
+                StartCoroutine(SetTextUI());//æ‰§è¡Œåç¨‹å¤„ç†
+                if (index == 3)//æ§åˆ¶ç‰©ä½“å¼€å¯
                 {
                     GameObject.Find("Dialogs/Canvas01/Panel/MainPlayer").SetActive(true);
                     GameObject.Find("Dialogs/Canvas01/Panel/Chief").SetActive(true);
                 }
-                if (index == 4)//¿ØÖÆÎïÌå¹Ø±Õ
+                if (index == 4)//æ§åˆ¶ç‰©ä½“å…³é—­
                 {
                     GameObject.Find("Dialogs/Canvas01/Panel/MainPlayer").SetActive(false);
                 }
             }
-            else if (!textFinished)//Ã¿°´ÏÂÒ»´Î°´¼ü£¬canceTypingµÄÖµ¶Ôµ÷
+            else if (!textFinished)//æ¯æŒ‰ä¸‹ä¸€æ¬¡æŒ‰é”®ï¼ŒcanceTypingçš„å€¼å¯¹è°ƒ
             {
                 cancelTyping = !cancelTyping;
             }
@@ -64,28 +64,28 @@ public class ThirdDialogSystem : MonoBehaviour
         textList.Clear();
         index = 0;
 
-        var lineData = file.text.Split('\n');//ÒÔ»»ĞĞ·ûÎª±ê¼ÇµãÊ¹µÃÎÄ±¾ÖğĞĞÊä³ö
+        var lineData = file.text.Split('\n');//ä»¥æ¢è¡Œç¬¦ä¸ºæ ‡è®°ç‚¹ä½¿å¾—æ–‡æœ¬é€è¡Œè¾“å‡º
 
         foreach (var line in lineData)
         {
-            textList.Add(line);//ÖğĞĞÊä³ö
+            textList.Add(line);//é€è¡Œè¾“å‡º
         }
     }
 
     IEnumerator SetTextUI()
     {
-        textFinished = false;//Êä³öÇ°±ê¼ÇÎª·ñ
-        text.text = "";//Ã¿´Îµ÷ÓÃÇ°½«ÏÈÇ°µÄÎÄ×ÖÇå¿Õ
+        textFinished = false;//è¾“å‡ºå‰æ ‡è®°ä¸ºå¦
+        text.text = "";//æ¯æ¬¡è°ƒç”¨å‰å°†å…ˆå‰çš„æ–‡å­—æ¸…ç©º
         int letter = 0;
-        while (!cancelTyping && letter < textList[index].Length - 1)//Î´È¡ÏûÊäÈëÔòÖ´ĞĞ
+        while (!cancelTyping && letter < textList[index].Length - 1)//æœªå–æ¶ˆè¾“å…¥åˆ™æ‰§è¡Œ
         {
-            text.text += textList[index][letter];//»ñµÃ¸ÃĞĞÎÄ×ÖµÄµÚletter¸ö×Ö·û
+            text.text += textList[index][letter];//è·å¾—è¯¥è¡Œæ–‡å­—çš„ç¬¬letterä¸ªå­—ç¬¦
             letter++;
-            yield return new WaitForSeconds(textSpeed);//ÔÚÖ´ĞĞÏÂÒ»´ÎÇ°µÈ´ıÊ±¼ä
+            yield return new WaitForSeconds(textSpeed);//åœ¨æ‰§è¡Œä¸‹ä¸€æ¬¡å‰ç­‰å¾…æ—¶é—´
         }
-        text.text = textList[index];//ÈôÉÏÊöÑ­»·²»Ö´ĞĞÔòÖ±½ÓÊä³öÈ«²¿ÎÄ±¾
-        cancelTyping = false;//Êä³öÍêºó½«Æä±ê¼ÇÎª¼Ù£¬±íÊ¾ÏÂÒ»ĞĞÎ´È¡ÏûÊäÈë
-        textFinished = true;//Êä³öºó±ê¼ÇÎªÕæ
+        text.text = textList[index];//è‹¥ä¸Šè¿°å¾ªç¯ä¸æ‰§è¡Œåˆ™ç›´æ¥è¾“å‡ºå…¨éƒ¨æ–‡æœ¬
+        cancelTyping = false;//è¾“å‡ºå®Œåå°†å…¶æ ‡è®°ä¸ºå‡ï¼Œè¡¨ç¤ºä¸‹ä¸€è¡Œæœªå–æ¶ˆè¾“å…¥
+        textFinished = true;//è¾“å‡ºåæ ‡è®°ä¸ºçœŸ
         index++;
     }
 }

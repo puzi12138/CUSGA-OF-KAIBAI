@@ -1,9 +1,9 @@
-using System.Collections;
+锘縰sing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//序幕主角操作代码
+//搴忓箷涓昏鎿嶄綔浠ｇ爜
 public class Player01 : MonoBehaviour
 {
     public Animator anim;
@@ -18,13 +18,13 @@ public class Player01 : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            anim.SetTrigger("Suffering");//执行淡出效果
+            anim.SetTrigger("Suffering");//鎵ц娣″嚭鏁堟灉
             Invoke("Next", 1.5f);
         }
     }
 
     public void Next()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);//加载至下一场景
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);//鍔犺浇鑷充笅涓�鍦烘櫙
     }
 }

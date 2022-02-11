@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//·ÇĞòÄ»Ö÷½Ç¿ØÖÆ´úÂë
+//éåºå¹•ä¸»è§’æ§åˆ¶ä»£ç 
 public class TheScene03Player01 : MonoBehaviour
 {
     public Animator anim;
@@ -15,16 +15,16 @@ public class TheScene03Player01 : MonoBehaviour
 
     void Update()
     {
-        GameObject obj = GameObject.Find("Dialogs/Canvas01/Panel");//ÕÒµ½¶Ô»°¿òÏµÍ³
+        GameObject obj = GameObject.Find("Dialogs/Canvas01/Panel");//æ‰¾åˆ°å¯¹è¯æ¡†ç³»ç»Ÿ
         if (Input.GetKeyDown(KeyCode.Space)|| Input.GetMouseButtonDown(0))
         {
-            anim.SetTrigger("Player01");///Ö´ĞĞ½ÇÉ«µ­Èë²Ù×÷
+            anim.SetTrigger("Player01");///æ‰§è¡Œè§’è‰²æ·¡å…¥æ“ä½œ
         }
-        else if (!obj.gameObject.activeInHierarchy)//µ±¶Ô»°¿òÏµÍ³¹Ø±ÕºóÖ´ĞĞÆô¶¯ÏÂÒ»Ä»²Ù×÷£¬·ÀÎó´¥
+        else if (!obj.gameObject.activeInHierarchy)//å½“å¯¹è¯æ¡†ç³»ç»Ÿå…³é—­åæ‰§è¡Œå¯åŠ¨ä¸‹ä¸€å¹•æ“ä½œï¼Œé˜²è¯¯è§¦
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                anim.SetTrigger("Player02");//Ö´ĞĞµ­³ö¶¯»­
+                anim.SetTrigger("Player02");//æ‰§è¡Œæ·¡å‡ºåŠ¨ç”»
                 Invoke("Final", 1.5f);
             }         
         }
@@ -32,6 +32,6 @@ public class TheScene03Player01 : MonoBehaviour
 
     public void Final()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);//¼ÓÔØÖÁÏÂÒ»¸ö³¡¾°
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);//åŠ è½½è‡³ä¸‹ä¸€ä¸ªåœºæ™¯
     }
 }
