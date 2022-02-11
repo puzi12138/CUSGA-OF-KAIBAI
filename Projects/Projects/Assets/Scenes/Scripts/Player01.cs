@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//序幕主角操作代码
 public class Player01 : MonoBehaviour
 {
     public Animator anim;
@@ -17,13 +18,13 @@ public class Player01 : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            anim.SetTrigger("Suffering");
+            anim.SetTrigger("Suffering");//执行淡出效果
             Invoke("Next", 1.5f);
         }
     }
 
     public void Next()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);//加载至下一场景
     }
 }

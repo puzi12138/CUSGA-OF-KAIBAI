@@ -482,6 +482,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 251924167448830848, guid: 49c993bb784d31048ad931bc3f55b81e, type: 3}
+      propertyPath: m_Name
+      value: "\u7B2C\u4E8C\u7AE0"
+      objectReference: {fileID: 0}
     - target: {fileID: 251924167448830851, guid: 49c993bb784d31048ad931bc3f55b81e, type: 3}
       propertyPath: m_Text
       value: "\u7B2C\u4E8C\u7AE0"
