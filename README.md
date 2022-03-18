@@ -8,7 +8,6 @@
 - 烨烨子：yyz
 - wcn：AA
 - hr：hr
-- 傻逼：纯寄吧抽傻逼cmq
 - 花生：猛1
 - xyjj：xy是（
 - SS：真正的猛1
